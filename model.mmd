@@ -1,0 +1,48 @@
+erDiagram
+    BOOKING {
+        string pickup_at
+        string booking_status
+        string created_at
+    }
+
+    STUDENT {
+        string student_number
+        string full_name
+        string email
+    }
+
+    EMPLOYEE {
+        string employee_number
+        string full_name
+        string email
+    }
+
+    EQUIPMENT {
+        string inventory_number
+        string name
+        string manufacturer
+        string model
+        string condition
+        string equipment_status
+        string category
+    }
+
+    ISSUANCE {
+        string issued_at
+        string due_at
+        string returned_at
+        string issued_condition
+        string returned_condition
+        string issuance_status
+    }
+
+    STUDENT ||--o{ BOOKING : makes
+    EMPLOYEE ||--o{ BOOKING : creates
+    EQUIPMENT ||--o{ BOOKING : reserved_in
+
+    BOOKING o|--o| ISSUANCE : results_in
+
+    STUDENT ||--o{ ISSUANCE : receives
+    EMPLOYEE ||--o{ ISSUANCE : issues
+    EMPLOYEE ||--o{ ISSUANCE : accepts_return
+    EQUIPMENT ||--o{ ISSUANCE : is_issued_in
